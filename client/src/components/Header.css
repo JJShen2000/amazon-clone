@@ -1,0 +1,241 @@
+.header {
+  background-color: #131921;
+  display: flex;
+  position: static;
+  float: none;
+  flex-flow: row nowrap;
+  height: 60px;
+}
+
+.header__left {
+  margin-left: 11px;
+  /* padding: 4px; */
+  display: flex;
+}
+
+.header__logo {
+  padding: 17px 15px 5px 6px;
+  margin: 1px;
+  background-color: #131921;
+}
+
+.header__logo:hover {
+  border-color: white !important;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.header__location {
+  color: white;
+  padding: 0 9px 0 9px;
+  margin: 5px 2px 5px 0;
+  display: flex;
+}
+
+.header__location:hover {
+  border-color: white;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.header__locationIcon {
+  background-position: -71px -378px;
+  width: 15px;
+  height: 18px;
+  margin-top: 8px;
+}
+
+.header__locText {
+  margin: auto;
+  margin-left: 3px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.header__locLine1 {
+  color: #ccc;
+  font-size: 12px;
+  line-height: 14px;
+  height: 14px;
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.header__optionLine2 {
+  padding-bottom: 1px;
+  padding-right: 0;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+}
+
+.header__fill {
+  border-radius: 4px 4px 4px 4px;
+  padding: 10px 4px 10px 3px;
+  display: flex;
+  flex: 1;
+  margin-right: 10px;
+}
+
+.header__searchDropdown {
+  display: flex;
+  position: static;
+  float: none;
+  background-color: #e6e6e6;
+  padding-left: 5px;
+  overflow: hidden;
+  border-radius: 4px 0 0 4px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.header__searchDropdown:hover {
+  background-color: #c8c8c8;
+}
+
+.header__searchDropdown > p {
+  font-weight: normal;
+  display: block;
+  min-height: 1.2em;
+  padding: 0px 2px 1px;
+  white-space: nowrap;
+  font-size: 12px;
+  margin-left: 5px;
+  color: rgb(93, 93, 93);
+}
+
+.header__searchDropdownIcon {
+  color: rgb(93, 93, 93);
+  height: 15px !important;
+}
+
+.header__search {
+  width: 100%;
+  border: none;
+}
+
+.header__searchIcon {
+  background-color: #febd69;
+  background-image: none;
+  border: none;
+  width: 45px !important;
+  height: 40px !important;
+  color: rgb(32, 32, 32);
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 0 4px 4px 0;
+}
+
+.header__searchIcon:hover {
+  background-color: #ffb04a;
+}
+
+.header__right {
+  margin-top: 2px;
+  padding: 3px 0 5px 0;
+  display: flex;
+}
+
+.header__language {
+  display: flex;
+  align-items: center;
+  margin-left: 1px;
+  margin-right: 0;
+  padding: 0px 9px 5px;
+}
+
+.header__language:hover {
+  border-color: white !important;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.header__optionLine1 {
+  font-size: 12px;
+  line-height: 14px;
+  height: 14px;
+  font-weight: 500;
+  padding-bottom: 1px;
+  padding-right: 0;
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+}
+
+.header__optionLine2 {
+  padding-bottom: 1px;
+  padding-right: 0;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 700;
+  display: flex;
+  justify-content: flex-start;
+  color: white;
+}
+
+.header__languageText {
+  color: white;
+}
+
+.header__accountOrder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2px;
+  margin-right: 0;
+  padding-right: 9px;
+  padding-left: 9px;
+}
+
+.header__accountOrder:hover {
+  border-color: white !important;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.header__cart {
+  display: flex;
+  align-items: flex-end;
+  margin: 0px 11px 0px 2px;
+  padding: 0px 9px 11px;
+}
+
+.header__cart:hover {
+  border-color: white !important;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.header__cartIconCount {
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 1px;
+  width: 38px;
+}
+
+.header__cartIcon {
+  object-fit: contain;
+  width: 38px;
+  height: 26px;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+}
+
+.header__cartCount {
+  position: relative;
+  left: -20px;
+  right: auto;
+  top: -15px;
+  justify-content: center;
+  color: #f08804;
+  font-size: 16px;
+  width: 19px;
+  font-weight: 700;
+}
