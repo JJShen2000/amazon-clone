@@ -1,0 +1,48 @@
+.nav {
+  background-color: #232f3e;
+  display: flex;
+  position: static;
+  float: none;
+  flex-flow: row nowrap;
+  padding-left: 11px;
+  max-height: 39px;
+  padding-top: 0;
+}
+
+.nav__menu {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  align-items: center;
+  width: auto;
+  height: auto;
+  border: none;
+  padding: 8px 9px 8px 9px;
+  margin: 0;
+}
+
+.nav > div:hover {
+  border-color: white !important;
+  border: 1px solid;
+  border-radius: 2px;
+}
+
+.nav__menuTitle {
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 700;
+  display: flex;
+  color: white;
+}
+
+.nav__option {
+  padding: 13px 9px;
+}
+
+.nav__optionTitle {
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: 500;
+  display: flex;
+  color: white;
+}
