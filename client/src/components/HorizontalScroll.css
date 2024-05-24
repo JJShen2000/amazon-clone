@@ -1,0 +1,94 @@
+.scroll {
+  position: relative;
+  width: 100%;
+  margin: 10px 10px 10px 10px;
+  background-color: white;
+  padding: 10px 20px;
+  max-width: 1460px;
+}
+
+.scroll > span {
+  display: flex;
+  font-size: 21px !important;
+  font-weight: 700;
+  padding-bottom: 0;
+  margin: 10px 0 0;
+}
+
+.scroll__container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  min-height: 220px;
+  width: 100%;
+  border: none;
+  margin: 0 10px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.scroll__container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.scroll__container::-webkit-scrollbar-thumb {
+  background-color: white;
+  cursor: pointer;
+}
+
+.scroll__container:hover::-webkit-scrollbar-thumb {
+  background-color: rgb(154, 154, 154);
+  border-radius: 4px;
+  transition: background-color 0.5s ease;
+}
+
+.scroll__container::-webkit-scrollbar-track {
+  background: white;
+}
+
+.scroll__image {
+  width: 100%;
+  height: 100%;
+  max-width: 270px;
+  max-height: 200px;
+}
+
+.scroll__container:hover .scroll__button {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.scroll__button {
+  position: absolute;
+  top: 85px;
+  background-color: #fff;
+  height: 100px;
+  line-height: 100px;
+  width: 45px;
+  text-align: center;
+  font-size: 23px !important;
+  font-weight: bold;
+  box-shadow: 0 1px 3px #888;
+  user-select: none;
+  border: none;
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.scroll__button.scroll__button--left {
+  border-radius: 0 3px 3px 0;
+  margin-left: 20px;
+  left: 0;
+}
+
+.scroll__button.scroll__button--right {
+  border-radius: 3px 0 0 3px;
+  margin-right: 20px;
+  right: 0;
+}
+
+.scroll__button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

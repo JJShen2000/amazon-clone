@@ -1,6 +1,8 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import "./Home.css";
+import { FluidCard, HorizontalScroll } from "../components";
+import "../components/FluidCard.css";
 
 function Home() {
   const baners = [
@@ -10,14 +12,25 @@ function Home() {
     "https://m.media-amazon.com/images/I/71FJQVPqGbL._SX3000_.jpg",
   ];
   return (
-    <div className="home__carousel">
-      <Carousel indicators={false} interval={5000}>
+    <div className="home">
+      <Carousel indicators={false} interval={5000} className="home__carousel">
         {baners.map((baner, index) => (
           <Carousel.Item key={index}>
-            <img className="home__carousel_image" src={baner} alt="banner"/>
+            <img className="home__carousel_image" src={baner} alt="banner" />
           </Carousel.Item>
         ))}
       </Carousel>
+
+      <div className="card__row">
+        <FluidCard />
+        <FluidCard />
+        <FluidCard />
+        <FluidCard />
+      </div>
+
+      <div className="card__row">
+        <HorizontalScroll />
+      </div>
     </div>
   );
 }

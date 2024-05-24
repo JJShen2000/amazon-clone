@@ -1,0 +1,35 @@
+.card__row {
+  z-index: 1;
+  display: flex;
+  max-width: 1480px;
+  padding-top: 20px;
+}
+
+.fluidCard {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 10px;
+  width: 100%;
+  z-index: 1;
+  border-radius: 0px;
+  padding: 20px 15px 15px 15px;
+  max-width: 400px;
+  min-width: 290px;
+}
+
+.fluidCard__header {
+  font-size: 21px;
+  line-height: 27.3px;
+  font-weight: bold;
+}
+
+.fluidCard__footer {
+  display: flex;
+  text-decoration: none;
+  color: #007185;
+  padding: 15px 20px 0 0;
+  /* margin-bottom: 20px; */
+  font-size: 13px !important;
+  line-height: 19px !important;
+}

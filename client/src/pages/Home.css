@@ -1,8 +1,14 @@
-.home__carousel {
+.home {
   display: flex;
+  flex-direction: column;
   align-items: center;
   padding: 0% 45px 40px;
   background-color: #e3e6e6;
+}
+
+.home__carousel {
+  margin-bottom: -24%;
+  max-width: 1480px;
 }
 
 .home__carousel_image {
@@ -23,7 +29,6 @@
 .carousel-control-prev-icon {
   width: 2.5rem !important;
   height: 2.5rem !important;
-  /* color: gray !important; */
 }
 
 .carousel-control-next {
