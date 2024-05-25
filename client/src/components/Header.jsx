@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import logo from "../logo.png";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
@@ -6,12 +6,19 @@ import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ReactCountryFlag from "react-country-flag";
 import cart from "../cart-icon.svg";
+import { Link } from "react-router-dom";
 
 function Header() {
+  const [inputSearch, setInputSearch] = useState("");
   return (
     <div className="header">
       <div className="header__left">
-        <img className="header__logo" src={logo} alt="Amazon Logo" />
+        <div className="header__logo">
+          <a href="/" className="header__logo-link">
+            <img src={logo} alt="Amazon Logo" />
+          </a>
+        </div>
+
         <div className="header__location">
           <LocationOnOutlinedIcon className="header__locationIcon" />
           <div className="header__locText">
@@ -27,10 +34,14 @@ function Header() {
         </div>
         <input
           className="header__search"
+          onChange={(e) => setInputSearch(e.target.value)}
+          value={inputSearch}
           type="text"
           placeholder="Search Amazon"
         />
-        <SearchSharpIcon className="header__searchIcon" />
+        <Link to={`/s?k=${inputSearch}`}>
+          <SearchSharpIcon className="header__searchIcon" />
+        </Link>
       </div>
       <div className="header__right">
         <div className="header__language">

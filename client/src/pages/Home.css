@@ -8,7 +8,7 @@
 
 .home__carousel {
   margin-bottom: -24%;
-  max-width: 1480px;
+  max-width: 1500px;
 }
 
 .home__carousel_image {
@@ -21,22 +21,26 @@
 }
 
 .carousel-control-prev {
-  top: -22rem !important;
-  left: -5rem !important;
+  top: 0 !important;
+  left: 0 !important;
   position: static;
+  height: 250px !important;
+  width: 80px !important;
 }
 
 .carousel-control-prev-icon {
+  top: -25rem !important;
   width: 2.5rem !important;
   height: 2.5rem !important;
 }
 
 .carousel-control-next {
-  top: -22rem !important;
-  right: -5% !important;
+  height: 250px !important;
+  width: 80px !important;
 }
 
 .carousel-control-next-icon {
+  top: -22rem !important;
   width: 2.5rem !important;
   height: 2.5rem !important;
 }

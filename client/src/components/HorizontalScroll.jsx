@@ -41,7 +41,7 @@ const HorizontalScroll = () => {
           &lt;
         </button>
         {images.map((src, index) => (
-          <img key={index} className="scroll__image" src={src} alt={`image-${index}`} />
+          <img key={index} className="scroll__image" src={src} alt={`product-${index}`} />
         ))}
         <button
           className="scroll__button scroll__button--right"

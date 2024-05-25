@@ -1,7 +1,8 @@
 .card__row {
   z-index: 1;
   display: flex;
-  max-width: 1480px;
+  width: 1480px;
+  height: 420px;
   padding-top: 20px;
 }
 
