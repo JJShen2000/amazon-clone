@@ -3,16 +3,20 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "client"
+    "client",
+    "server"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "\"npm run start --workspace=client\"",
+    "start": "concurrently \"npm run start --workspace=client\" \"npm run start --workspace=server\"",
     "install-all": "npm install --workspaces",
     "client": "npm run start --workspace=client"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }
