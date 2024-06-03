@@ -9,7 +9,16 @@ router.get("/search", function (req, res) {
     {
       type: "checkbox",
       title: "Delivery Day",
-      options: ["Get It by Tomorrow"],
+      options: [{ id: "tomorrow", label: "Get It by Tomorrow" }],
+    },
+    {
+      type: "list",
+      title: "Department",
+      backLable: "Any Department",
+      elements: [
+        { id: "Amazon-Devices", label: "Amazon Devices" },
+        { id: "Electronics", label: "Electronics" },
+      ],
     },
     {
       type: "Customer Reviews",
