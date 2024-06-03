@@ -1,0 +1,27 @@
+.search__infoBar {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.search__infoBar--text {
+  display: flex;
+  align-items: flex-start;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  font-weight: bold !important;
+  margin: 8px 8px 8px 8px;
+}
+
+.search__content {
+  display: flex;
+  padding-top: 14px;
+  margin: 0 auto;
+}
+
+.search__filtersPanel {
+  flex: 1;
+}
+
+.search__results {
+  flex: 5;
+}
