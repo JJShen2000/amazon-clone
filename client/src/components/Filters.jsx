@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Checkbox, Rating, Slider } from "@mui/material";
 import axios from "axios";
@@ -8,26 +8,27 @@ import classNames from "classnames";
 import apiUrl from "../config";
 import { setFilters, setProducts } from "../store/modules/searchResultStore";
 import "./Filters.css";
+import useUrlParams from "../utils/useUrlParams";
 
 const Filters = () => {
   // states for price slider
   const [priceRange, setPriceRange] = useState([0, 0]);
-  const navigate = useNavigate();
   const { filters, products } = useSelector((store) => store.searchResult);
   const dispatch = useDispatch();
   const location = useLocation();
 
-  // Handle price slider change
-  const handlePriceChange = (event, newValue) => {
-    setPriceRange(newValue);
-  };
+  const {
+    removeUrlParams,
+    replaceUrlParams,
+    appendUrlParams,
+    paramExists,
+    getUrlParams,
+  } = useUrlParams();
 
   // Fetch data from backend API
   const fetchData = () => {
     return async (dispatch) => {
-      const response = await axios.get(
-        `${apiUrl}/search${window.location.search}`
-      );
+      const response = await axios.get(`${apiUrl}/search${location.search}`);
       dispatch(setFilters(response.data.filters));
       dispatch(setProducts(response.data.products));
     };
@@ -59,51 +60,6 @@ const Filters = () => {
     return filterTitle.replace(/\s+/g, "").toLowerCase();
   };
 
-  // Update multiple URL parameters
-  const updateUrlParams = (params) => {
-    // current URL's query
-    const searchParams = new URLSearchParams(window.location.search);
-
-    // Iterate over the list of parameter
-    params.forEach(({ key, value, deleteFlag, replaceFlag }) => {
-      if (deleteFlag === true) {
-        if (value !== undefined && value !== null) {
-          searchParams.delete(key, value);
-        } else {
-          searchParams.delete(key);
-        }
-      } else {
-        if (replaceFlag === true) {
-          searchParams.delete(key);
-        }
-        if (value !== null && value !== undefined) {
-          searchParams.set(key, value);
-        }
-      }
-    });
-
-    // Navigate to the new URL
-    navigate({ search: searchParams.toString() });
-  };
-
-  // Check if a specific parameter in URL exists
-  const paramExists = (key, value = null) => {
-    // current URL's query
-    const searchParams = new URLSearchParams(window.location.search);
-    if (value === null) {
-      return searchParams.has(key);
-    } else {
-      return searchParams.has(key, value);
-    }
-  };
-
-  // get value of specific parameter in URL
-  const getUrlParams = (key) => {
-    // current URL's query
-    const searchParams = new URLSearchParams(window.location.search);
-    return searchParams.get(key);
-  };
-
   return (
     <div className="filters">
       {filters.map((filter, index) => {
@@ -118,11 +74,7 @@ const Filters = () => {
               {paramExists("rating_low") && (
                 <button
                   className="filters__link"
-                  onClick={(e) =>
-                    updateUrlParams([
-                      { key: "rating_low", value: null, deleteFlag: true },
-                    ])
-                  }
+                  onClick={(e) => removeUrlParams("rating_low")}
                 >
                   &lt; Clear
                 </button>
@@ -133,15 +85,7 @@ const Filters = () => {
                     getUrlParams("rating_low") === numStar.toString()) && (
                     <div key={idx} className="filters__rating-option">
                       <button
-                        onClick={(e) => {
-                          updateUrlParams([
-                            {
-                              key: "rating_low",
-                              value: numStar,
-                              replaceFlag: true,
-                            },
-                          ]);
-                        }}
+                        onClick={(e) => replaceUrlParams("rating_low", numStar)}
                         className="filters__link"
                       >
                         <Rating
@@ -171,7 +115,9 @@ const Filters = () => {
                 <Slider
                   className="filters__slider"
                   value={priceRange}
-                  onChange={handlePriceChange}
+                  onChange={(e, newValue) => {
+                    setPriceRange(newValue);
+                  }}
                   min={filter.low}
                   max={filter.high}
                   valueLabelDisplay="auto"
@@ -182,21 +128,20 @@ const Filters = () => {
                       priceRange[0] === filter.low &&
                       priceRange[1] === filter.high
                     ) {
-                      updateUrlParams([
-                        { key: "priceMin", value: null, deleteFlag: true },
-                        { key: "priceMax", value: null, deleteFlag: true },
+                      removeUrlParams([
+                        { key: "priceMin" },
+                        { key: "priceMax" },
                       ]);
                     } else {
-                      updateUrlParams([
+                      console.log("priceRange", priceRange)
+                      replaceUrlParams([
                         {
                           key: "priceMin",
                           value: priceRange[0],
-                          replaceFlag: true,
                         },
                         {
                           key: "priceMax",
                           value: priceRange[1],
-                          replaceFlag: true,
                         },
                       ]);
                     }
@@ -210,10 +155,7 @@ const Filters = () => {
                 <button
                   className="filters__price--reset"
                   onClick={(e) => {
-                    updateUrlParams([
-                      { key: "priceMin", value: null, deleteFlag: true },
-                      { key: "priceMax", value: null, deleteFlag: true },
-                    ]);
+                    removeUrlParams([{ key: "priceMin" }, { key: "priceMax" }]);
                   }}
                 >
                   Reset price range
@@ -228,15 +170,7 @@ const Filters = () => {
               {paramExists(getUrlParamKey(filter.title)) && (
                 <button
                   className="filters__link"
-                  onClick={(e) =>
-                    updateUrlParams([
-                      {
-                        key: getUrlParamKey(filter.title),
-                        value: null,
-                        deleteFlag: true,
-                      },
-                    ])
-                  }
+                  onClick={() => removeUrlParams(getUrlParamKey(filter.title))}
                 >
                   &lt; Clear
                 </button>
@@ -250,25 +184,12 @@ const Filters = () => {
                       onChange={(e) => {
                         const newSetting = !paramExists(queryKey, option.id);
                         if (newSetting) {
-                          updateUrlParams([
-                            {
-                              key: queryKey,
-                              value: option.id,
-                              replaceFlag: true,
-                            },
-                          ]);
+                          appendUrlParams(queryKey, option.id);
                         } else {
-                          // remove
-                          updateUrlParams([
-                            {
-                              key: queryKey,
-                              value: option.id,
-                              deleteFlag: true,
-                            },
-                          ]);
+                          removeUrlParams(queryKey, option.id);
                         }
                       }}
-                      sx={{"&:hover": {color: "#1196AB"}}}
+                      sx={{ "&:hover": { color: "#1196AB" } }}
                       className="filters__checkbox"
                     />
                     <span className="filters__text">{option.label}</span>
@@ -284,15 +205,7 @@ const Filters = () => {
               {paramExists(getUrlParamKey(filter.title)) && (
                 <button
                   className="filters__link"
-                  onClick={(e) =>
-                    updateUrlParams([
-                      {
-                        key: getUrlParamKey(filter.title),
-                        value: null,
-                        deleteFlag: true,
-                      },
-                    ])
-                  }
+                  onClick={() => removeUrlParams(getUrlParamKey(filter.title))}
                 >
                   &lt; {filter.backLable}
                 </button>
@@ -305,25 +218,9 @@ const Filters = () => {
                     <div key={idx}>
                       <button
                         onClick={(e) => {
-                          const newSetting = !paramExists(queryKey, element.id);
-                          if (newSetting) {
-                            updateUrlParams([
-                              {
-                                key: queryKey,
-                                value: element.id,
-                                replaceFlag: true,
-                              },
-                            ]);
-                          } else {
-                            // remove
-                            updateUrlParams([
-                              {
-                                key: queryKey,
-                                value: element.id,
-                                deleteFlag: true,
-                              },
-                            ]);
-                          }
+                          paramExists(queryKey, element.id)
+                            ? removeUrlParams(queryKey, element.id)
+                            : replaceUrlParams(queryKey, element.id);
                         }}
                         className={classNames("filters__link", {
                           clicked: paramExists(queryKey, element.id),

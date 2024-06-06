@@ -43,6 +43,10 @@
   font: bold;
 }
 
+.filters__price--button:hover {
+  background-color: rgb(245, 245, 245);
+}
+
 .filters__price--reset {
   vertical-align: middle;
   line-height: 16px;
