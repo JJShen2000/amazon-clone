@@ -133,7 +133,7 @@ const Filters = () => {
                         { key: "priceMax" },
                       ]);
                     } else {
-                      console.log("priceRange", priceRange)
+                      console.log("priceRange", priceRange);
                       replaceUrlParams([
                         {
                           key: "priceMin",

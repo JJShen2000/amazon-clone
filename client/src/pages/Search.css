@@ -1,6 +1,8 @@
 .search__infoBar {
   border-top: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-direction: row;
 }
 
 .search__infoBar--text {
@@ -10,6 +12,28 @@
   line-height: 20px !important;
   font-weight: bold !important;
   margin: 8px 8px 8px 8px;
+  width: calc(0.75 * (100vw - 28px));
+  min-width: 747px;
+  max-width: 1347px;
+}
+
+.search__infoBar--sort {
+  display: flex;
+  justify-content: flex-end;
+  width: calc(0.25 * (100vw - 28px));
+  min-width: 249px;
+  max-width: 449px;
+  margin: 8px 0;
+  padding-right: 8px;
+}
+
+.search__infoBar--sortDropdown {
+  display: flex;
+  align-items: flex-end;
+  border-color: #d5d9d9;
+  border-radius: 8px;
+  font-size: 14px !important;
+  line-height: 20px !important;
 }
 
 .search__content {
