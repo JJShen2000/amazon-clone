@@ -4,6 +4,8 @@ var router = express.Router();
 router.get("/search", function (req, res) {
   let { query, category, minPrice, maxPrice, sort, page, limit } = req.query;
 
+  let meta = { productsPerPage: 25, totalProducts: 100 };
+
   // filters setting
   let filters = [
     {
@@ -30,11 +32,58 @@ router.get("/search", function (req, res) {
 
   // product list
   let products = [
-    { id: 1, name: "ipad", price: 699 },
-    { id: 2, name: "iphone", price: 999 },
+    {
+      id: 0,
+      name: "Amazon Fire TV Stick 4K streaming device, more than 1.5 million movies and TV episodes, supports Wi-Fi 6, watch free & live TV",
+      price: 49.99,
+      rating: 4.7,
+      ratingNumber: 32474,
+      img: "https://m.media-amazon.com/images/I/41vhe0X8wbL._AC_UL320_.jpg",
+    },
+    {
+      id: 1,
+      name: "Amazon Basics Cotton Swabs, 500 Count",
+      price: 2.96,
+      rating: 4.7,
+      ratingNumber: 47807,
+      img: "https://m.media-amazon.com/images/I/612HeyYXOnL._AC_UL320_.jpg",
+    },
+    {
+      id: 2,
+      name: "Amazon Kindle - The lightest and most compact Kindle, with extended battery life, adjustable front light, and 16 GB storage - Denim",
+      price: 99.99,
+      rating: 4.6,
+      ratingNumber: 19240,
+      img: "https://m.media-amazon.com/images/I/71dFhAIwENL._AC_UL320_.jpg",
+    },
+    {
+      id: 0,
+      name: "Amazon Fire TV Stick 4K streaming device, more than 1.5 million movies and TV episodes, supports Wi-Fi 6, watch free & live TV",
+      price: 49.99,
+      rating: 4.7,
+      ratingNumber: 32474,
+      img: "https://m.media-amazon.com/images/I/41vhe0X8wbL._AC_UL320_.jpg",
+    },
+    {
+      id: 1,
+      name: "Amazon Basics Cotton Swabs, 500 Count",
+      price: 2.96,
+      rating: 4.7,
+      ratingNumber: 47807,
+      img: "https://m.media-amazon.com/images/I/612HeyYXOnL._AC_UL320_.jpg",
+    },
+    {
+      id: 2,
+      name: "Amazon Kindle - The lightest and most compact Kindle, with extended battery life, adjustable front light, and 16 GB storage - Denim",
+      price: 99.99,
+      rating: 4.6,
+      ratingNumber: 19240,
+      img: "https://m.media-amazon.com/images/I/71dFhAIwENL._AC_UL320_.jpg",
+    },
   ];
 
   res.json({
+    meta,
     filters,
     products,
   });

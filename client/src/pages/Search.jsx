@@ -1,9 +1,18 @@
-import React, { useState } from "react";
-import "./Search.css";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import { Filters } from "../components";
+import { useDispatch, useSelector } from "react-redux";
 import Select from "react-select";
+import axios from "axios";
 
+
+import "./Search.css";
+import { Filters, CustomPagination, ProductCard } from "../components";
+import apiUrl from "../config";
+import {
+  setMeta,
+  setFilters,
+  setProducts,
+} from "../store/modules/searchResultStore";
 import useUrlParams from "../utils/useUrlParams";
 
 function Search() {
@@ -12,23 +21,35 @@ function Search() {
   };
   const query = useQuery();
   const keyword = query.get("k");
-  const itemsPerPage = 16;
-  const numResults = 979;
+  const dispatch = useDispatch();
+  const location = useLocation();
+
+  // Fetch data from backend API
+  const fetchData = () => {
+    return async (dispatch) => {
+      const response = await axios.get(`${apiUrl}/search${location.search}`);
+      dispatch(setMeta(response.data.meta));
+      dispatch(setFilters(response.data.filters));
+      dispatch(setProducts(response.data.products));
+    };
+  };
+
+  // Fetch data on component mount or URL change
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch, location]);
+
+  const { meta, products } = useSelector((store) => store.searchResult);
 
   const options = [
-    { value: "option1", label: "Featured" },
-    { value: "option2", label: "Price: Low to High" },
-    { value: "option3", label: "Price: High to Low" },
-    { value: "option4", label: "Avg. Customer Review" },
-    { value: "option5", label: "Newest Arrivals" },
-    { value: "option6", label: "Best Sellers" },
+    { value: "featured", label: "Featured" },
+    { value: "price_asc", label: "Price: Low to High" },
+    { value: "price_desc", label: "Price: High to Low" },
+    { value: "customer", label: "Avg. Customer Review" },
+    { value: "arrivals", label: "Newest Arrivals" },
+    { value: "sellers", label: "Best Sellers" },
   ];
   const [selectedOption, setSelectedOption] = useState(options[0]);
-  const formatOptionLabel = ({ label }) => {
-    return selectedOption && selectedOption.label === label
-      ? `Sort by: ${label}`
-      : label;
-  };
 
   const customStyles = {
     control: (provided) => ({
@@ -82,13 +103,13 @@ function Search() {
     }),
   };
 
-  const { removeUrlParams, replaceUrlParams } = useUrlParams();
+  const { replaceUrlParams } = useUrlParams();
 
   return (
     <div>
       <div className="search__infoBar">
         <span className="search__infoBar--text">
-          1-{itemsPerPage} of {numResults} results for{" "}
+          1-{meta.productsPerPage} of {meta.totalProducts} results for{" "}
           <span style={{ color: "#c45500" }}>"{keyword}"</span>
         </span>
         <div className="search__infoBar--sort">
@@ -116,7 +137,13 @@ function Search() {
           <Filters />
         </div>
         <div className="search__results">
-          <span>Results</span>
+          <span className="search__results--title">Results</span>
+          <div className="search__results--container">
+            {products.map((product) => (
+              <ProductCard product={product}/>
+            ))}
+          </div>
+          <CustomPagination {...meta}/>
         </div>
       </div>
     </div>

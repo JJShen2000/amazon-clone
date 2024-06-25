@@ -3,10 +3,14 @@ import { createSlice } from "@reduxjs/toolkit";
 const searchResultStore = createSlice({
   name: "searchResult",
   initialState: {
+    meta: {},
     filters: [],
     products: [],
   },
   reducers: {
+    setMeta: (state, action) => {
+      state.meta = action.payload;
+    },
     setFilters: (state, action) => {
       state.filters = action.payload;
     },
@@ -16,6 +20,6 @@ const searchResultStore = createSlice({
   },
 });
 
-export const { setFilters, setProducts } = searchResultStore.actions;
+export const { setMeta, setFilters, setProducts } = searchResultStore.actions;
 const searchResultReducer = searchResultStore.reducer;
 export default searchResultReducer;

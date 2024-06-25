@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { Checkbox, Rating, Slider } from "@mui/material";
-import axios from "axios";
 import classNames from "classnames";
 
-import apiUrl from "../config";
-import { setFilters, setProducts } from "../store/modules/searchResultStore";
 import "./Filters.css";
 import useUrlParams from "../utils/useUrlParams";
 
 const Filters = () => {
   // states for price slider
   const [priceRange, setPriceRange] = useState([0, 0]);
-  const { filters, products } = useSelector((store) => store.searchResult);
-  const dispatch = useDispatch();
-  const location = useLocation();
-
+  const { filters } = useSelector((store) => store.searchResult);
+  
   const {
     removeUrlParams,
     replaceUrlParams,
@@ -24,20 +18,6 @@ const Filters = () => {
     paramExists,
     getUrlParams,
   } = useUrlParams();
-
-  // Fetch data from backend API
-  const fetchData = () => {
-    return async (dispatch) => {
-      const response = await axios.get(`${apiUrl}/search${location.search}`);
-      dispatch(setFilters(response.data.filters));
-      dispatch(setProducts(response.data.products));
-    };
-  };
-
-  // Fetch data on component mount or URL change
-  useEffect(() => {
-    dispatch(fetchData());
-  }, [dispatch, location]);
 
   // Set price range by new fetched data or url
   useEffect(() => {
