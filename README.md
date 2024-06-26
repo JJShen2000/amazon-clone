@@ -4,6 +4,8 @@
 
 ![1716561572598](image/README/1716561572598.png)
 
+![1719405214235](image/README/1719405214235.png)
+
 ## Usage
 
 `npm start`
@@ -14,14 +16,15 @@
 
 * [X] Header
 * [X] Home Page
+
   * [X] Carousel
   * [X] Product Card
   * [X] Product Scrollable Area
-* [ ] Search Result Page
-* [ ] Product Page
-* [ ] Cart
-* [ ] Purchase Page
+* [X] Search Result Page
 * [ ] Login & Authentication
+* [ ] Cart
+* [ ] Product Page
+* [ ] Purchase Page
 
 ### Backend
 
