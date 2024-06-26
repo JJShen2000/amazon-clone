@@ -17,25 +17,6 @@
   max-width: 1347px;
 }
 
-.search__infoBar--sort {
-  display: flex;
-  justify-content: flex-end;
-  width: calc(0.25 * (100vw - 28px));
-  min-width: 249px;
-  max-width: 449px;
-  margin: 8px 0;
-  padding-right: 8px;
-}
-
-.search__infoBar--sortDropdown {
-  display: flex;
-  align-items: flex-end;
-  border-color: #d5d9d9;
-  border-radius: 8px;
-  font-size: 14px !important;
-  line-height: 20px !important;
-}
-
 .search__content {
   display: flex;
   padding-top: 14px;
