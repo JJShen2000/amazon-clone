@@ -1,0 +1,52 @@
+.authForm > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.authForm > div > label {
+  padding-left: 2px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.authForm > div > input {
+  height: 31px;
+  padding: 3px 7px;
+  line-height: normal;
+  margin-bottom: 10px;
+  background-color: white;
+  width: 300px;
+  border: 1px solid gray;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.authForm > div > input:focus {
+  border: 1px solid gray !important;
+  border-color: #00aaff;
+  box-shadow: 0 0 5px rgb(0, 170, 255);
+}
+
+.authForm > button {
+  background: #ffd814;
+  width: 100%;
+  height: 29px;
+  border: 1px solid;
+  border-radius: 7px;
+  border-color: #fcd200;
+  margin-top: 10px;
+}
+
+.authForm > button:hover {
+  background: #ddbb10;
+}
+
+.authForm__alert {
+  margin-bottom: 0;
+  text-align: left;
+  font-size: 12px;
+  line-height: 15px;
+}

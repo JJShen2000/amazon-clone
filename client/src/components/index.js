@@ -6,3 +6,5 @@ export { default as Filters } from "./Filters";
 export { default as CustomPagination } from "./CustomPagination";
 export { default as ProductCard } from "./ProductCard";
 export { default as SortDropdown } from "./SortDropdown";
+export { default as AuthForm } from "./AuthForm";
+export { default as AuthContainer } from "./AuthContainer";

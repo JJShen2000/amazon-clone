@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./Header.css";
-import logo from "../logo.png";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
@@ -9,13 +8,14 @@ import cart from "../cart-icon.svg";
 import { Link } from "react-router-dom";
 
 function Header() {
+  const logoAmazonClone = process.env.PUBLIC_URL + "/logo-amazon-clone-white.png";
   const [inputSearch, setInputSearch] = useState("");
   return (
     <div className="header">
       <div className="header__left">
         <div className="header__logo">
           <a href="/" className="header__logo-link">
-            <img src={logo} alt="Amazon Logo" />
+            <img src={logoAmazonClone} alt="Amazon Logo" />
           </a>
         </div>
 
@@ -50,11 +50,13 @@ function Header() {
           <ArrowDropDownIcon className="header__searchDropdownIcon" />
         </div>
         <div className="header__accountOrder">
-          <span className="header__optionLine1">Hello, sign in</span>
-          <div className="header__optionLine2">
-            <span>Account & Lists</span>
-            <ArrowDropDownIcon className="header__searchDropdownIcon" />
-          </div>
+          <Link to={`/signin`} style={{ textDecoration: "none" }}>
+            <span className="header__optionLine1">Hello, sign in</span>
+            <div className="header__optionLine2">
+              <span>Account & Lists</span>
+              <ArrowDropDownIcon className="header__searchDropdownIcon" />
+            </div>
+          </Link>
         </div>
         <div className="header__accountOrder">
           <span className="header__optionLine1">Returns</span>
