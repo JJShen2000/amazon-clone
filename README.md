@@ -2,8 +2,7 @@
 
 This project is a clone of Amazon.
 
-- Teck Stacks: React.js + Express
-
+- Teck Stack: React.js + Express
 
 **Disclaimer:**
 
@@ -21,7 +20,11 @@ This project does not store any real user data or interact with any real Amazon 
 
 ## Usage
 
-`npm start`
+- `docker-compose up`
+  - Run PostgreSQL
+  - frontend / backend are not Dockerized yet.
+- `npm start`
+  - Run frontend / backend
 
 ## Goal
 
@@ -42,4 +45,5 @@ This project does not store any real user data or interact with any real Amazon 
 ### Backend
 
 - [ ] Authentication
-  - [ ] JWT
+  - [X] JWT
+  - [ ] Verify Email
