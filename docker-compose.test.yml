@@ -3,7 +3,7 @@ version: '3.9'
 services:
   db:
     image: postgres
-    container_name: postgres
+    container_name: postgres_test
     restart: always
     environment:
       - POSTGRES_DB=${DB_NAME}
@@ -11,34 +11,29 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     volumes:
-      - pgdata:/var/lib/postgresql
       - ./db/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh
     networks:
       - database_network
 
   backend:
     build: ./server
-    container_name: backend
-    restart: always
+    container_name: backend_test
+    command: npm test
     environment:
-      NODE_ENV: development
+      NODE_ENV: test
 
-      DB_NAME: ${DB_NAME}
+      DB_NAME_TEST: ${DB_NAME_TEST}
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DB_HOST: db
-    depends_on:
-      - db
-    ports:
-      - ${BACKEND_PORT}:3001
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
+    depends_on:
+      - db
     networks:
       - database_network
 
-volumes:
-  pgdata:
 networks:
   database_network:
     driver: bridge

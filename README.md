@@ -4,14 +4,6 @@ This project is a clone of Amazon.
 
 - Teck Stack: React.js + Express
 
-**Disclaimer:**
-
-This project is an educational exercise and a personal project inspired by Amazon. It is not affiliated with or endorsed by Amazon Inc. or any of its subsidiaries. All trademarks and registered trademarks are the property of their respective owners.
-
-The purpose of this project is solely for non-commercial, educational purposes. The design, layout, and features of this project may resemble or be inspired by Amazon's website, but it is not intended to replicate its functionality for commercial use.
-
-This project does not store any real user data or interact with any real Amazon services. Any products or listings shown are for demonstration purposes only and are not real or available for purchase.
-
 ![1721050030266](image/README/1721050030266.png)
 
 ![1716561572598](image/README/1716561572598.png)
@@ -21,11 +13,13 @@ This project does not store any real user data or interact with any real Amazon 
 ## Usage
 
 - `docker-compose up`
-  - Run PostgreSQL
-  - frontend / backend are not Dockerized yet.
-- `npm start`
-  - Run frontend / backend
+  - Run PostgreSQL and backend server
+  - backend are not Dockerized yet.
+- `cd client && npm start`
+  - Run frontend
 
+- Test for backend
+  - `docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from backend`
 ## Goal
 
 ### Frontend
@@ -47,3 +41,11 @@ This project does not store any real user data or interact with any real Amazon 
 - [ ] Authentication
   - [X] JWT
   - [ ] Verify Email
+
+**Disclaimer:**
+
+This project is an educational exercise and a personal project inspired by Amazon. It is not affiliated with or endorsed by Amazon Inc. or any of its subsidiaries. All trademarks and registered trademarks are the property of their respective owners.
+
+The purpose of this project is solely for non-commercial, educational purposes. The design, layout, and features of this project may resemble or be inspired by Amazon's website, but it is not intended to replicate its functionality for commercial use.
+
+This project does not store any real user data or interact with any real Amazon services. Any products or listings shown are for demonstration purposes only and are not real or available for purchase.
