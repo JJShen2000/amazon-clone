@@ -1,9 +1,7 @@
 #!/bin/bash
 set -e
 
-cat <<EOF > /docker-entrypoint-initdb.d/init-db.sql
-CREATE DATABASE IF NOT EXISIS ${POSTGRES_DB};
-CREATE DATABASE IF NOT EXISIS ${POSTGRES_DB}_test;
-EOF
-
-exec docker-entrypoint.sh postgres
+psql -v ON_ERROR_STOP=1 --username ${POSTGRES_USER} --dbname ${POSTGRES_DB} <<-EOSQL
+    SELECT 'CREATE DATABASE ${POSTGRES_DB}_test OWNER ${POSTGRES_USER}'
+    WHERE NOT EXISTS (SELECT FROM pg_database WHERE datname = '${POSTGRES_DB}_test')\gexec
+EOSQL
