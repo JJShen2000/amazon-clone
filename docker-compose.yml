@@ -31,11 +31,27 @@ services:
       - db
     ports:
       - ${BACKEND_PORT}:3001
+    expose:
+      - 3001
     volumes:
       - ./server:/usr/src/app
       - /usr/src/app/node_modules
     networks:
       - database_network
+
+  frontend:
+    build: ./client
+    container_name: frontend
+    restart: always
+    environment:
+      NODE_ENV: development
+      BACKEND_HOST: backend
+      BACKEND_PORT: 3001
+    ports:
+      - ${FRONTEND_PORT}:3000
+    volumes:
+      - ./client:/usr/src/app
+      - /usr/src/app/node_modules
 
 volumes:
   pgdata:
