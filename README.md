@@ -2,7 +2,19 @@
 
 This project is a clone of Amazon.
 
-- Teck Stack: React.js + Express
+## Teck Stack
+- Frontend
+  - React.js, Redux
+- Backend
+  - Express
+- Database
+  - PostgreSQL
+- Containers
+  - Docker
+- Testing
+  - Backend: Jest
+
+## Screenshots
 
 ![1721050030266](image/README/1721050030266.png)
 
@@ -11,15 +23,17 @@ This project is a clone of Amazon.
 ![1719405214235](image/README/1719405214235.png)
 
 ## Usage
+- Run frontend client, backend server, and PostgreSQL.
+  ```
+   docker-compose up
+  ```
 
-- `docker-compose up`
-  - Run PostgreSQL and backend server
-  - backend are not Dockerized yet.
-- `cd client && npm start`
-  - Run frontend
+- Then you can access website via `http://localhost:3000/`
 
 - Test for backend
-  - `docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from backend`
+  ```
+  docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from backend
+  ```
 ## Goal
 
 ### Frontend
@@ -31,7 +45,9 @@ This project is a clone of Amazon.
   * [X] Product Card
   * [X] Product Scrollable Area
 * [X] Search Result Page
-* [X] Sign in & Registration
+* [ ] Sign in & Registration
+  * [X] UI
+  * [ ] API
 * [ ] Cart
 * [ ] Product Page
 * [ ] Purchase Page
@@ -42,7 +58,7 @@ This project is a clone of Amazon.
   - [X] JWT
   - [ ] Verify Email
 
-**Disclaimer:**
+## Disclaimer
 
 This project is an educational exercise and a personal project inspired by Amazon. It is not affiliated with or endorsed by Amazon Inc. or any of its subsidiaries. All trademarks and registered trademarks are the property of their respective owners.
 
