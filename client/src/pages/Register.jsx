@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import { AuthContainer, AuthForm } from "../components";
+import { AuthContainer, AuthForm } from "@/components";
 import "./Register.css";
 
 const Register = () => {

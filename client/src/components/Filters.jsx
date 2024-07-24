@@ -4,7 +4,7 @@ import { Checkbox, Rating, Slider } from "@mui/material";
 import classNames from "classnames";
 
 import "./Filters.css";
-import useUrlParams from "../utils/useUrlParams";
+import useUrlParams from "@/utils/useUrlParams";
 
 const Filters = () => {
   // states for price slider

@@ -25,6 +25,7 @@ This project is a clone of Amazon.
 ## Usage
 - Run frontend client, backend server, and PostgreSQL.
   ```
+   docker-compose build
    docker-compose up
   ```
 

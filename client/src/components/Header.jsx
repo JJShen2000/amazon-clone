@@ -4,7 +4,7 @@ import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ReactCountryFlag from "react-country-flag";
-import cart from "../cart-icon.svg";
+import cart from "@/cart-icon.svg";
 import { Link } from "react-router-dom";
 
 function Header() {

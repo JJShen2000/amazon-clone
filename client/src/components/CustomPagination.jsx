@@ -2,7 +2,7 @@ import React from "react";
 import { Pagination, PaginationItem } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import useUrlParams from "../utils/useUrlParams";
+import useUrlParams from "@/utils/useUrlParams";
 
 const CustomStyledPagination = styled(Pagination)(({ theme }) => ({
   border: "1px solid #ccc",

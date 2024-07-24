@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Signin.css";
 import { Link } from "react-router-dom";
-import { AuthContainer, AuthForm } from "../components";
+import { AuthContainer, AuthForm } from "@/components";
 
 const Signin = () => {
   const [isEmailStep, setIsEmailStep] = useState(true);
@@ -54,7 +54,7 @@ const Signin = () => {
             <p>
               {email}{" "}
               <a
-                href="#"
+                href="/#"
                 onClick={() => {
                   setIsEmailStep(true);
                   setEmail("");
