@@ -20,7 +20,6 @@ const ProductCard = ({ product }) => {
           readOnly
           sx={{ color: "#DE7921" }}
           size="small"
-          //   className="productCard__rating--star"
         />
         <span className="productCard__rating--Number">
           {product.ratingNumber.toLocaleString()}

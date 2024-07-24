@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select";
 
-import useUrlParams from "@/utils/useUrlParams";
+import { useUrlParams } from "@/utils";
 import "./SortDropdown.css";
 
 const SortDropdown = () => {

@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./Signin.css";
 import { Link } from "react-router-dom";
 import { AuthContainer, AuthForm } from "@/components";
+
+import "./Signin.css";
 
 const Signin = () => {
   const [isEmailStep, setIsEmailStep] = useState(true);
@@ -13,8 +14,6 @@ const Signin = () => {
       label: "Email",
       type: "email",
       name: "email",
-      value: email,
-      onChange: (e) => setEmail(e.target.value),
     },
   ];
   const field_password = [
@@ -22,8 +21,6 @@ const Signin = () => {
       label: "Password",
       type: "password",
       name: "password",
-      value: password,
-      onChange: (e) => setPassword(e.target.value),
     },
   ];
 

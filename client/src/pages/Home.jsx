@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+
 import "./Home.css";
 import { FluidCard, HorizontalScroll } from "@/components";
 import "@/components/FluidCard.css";

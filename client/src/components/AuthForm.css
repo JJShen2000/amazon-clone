@@ -44,6 +44,14 @@
   background: #ddbb10;
 }
 
+.authForm__warning {
+  color: red;
+  margin-bottom: 0;
+  text-align: left;
+  font-size: 12px;
+  line-height: 15px;
+}
+
 .authForm__alert {
   margin-bottom: 0;
   text-align: left;

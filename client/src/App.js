@@ -3,10 +3,13 @@ import { Header, Nav } from "./components";
 import { Home, Search, Signin, Register } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
+      <ToastContainer position="top-center" />
       <Router>
         <Routes>
           <Route

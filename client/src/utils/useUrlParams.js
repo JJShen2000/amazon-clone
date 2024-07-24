@@ -12,7 +12,6 @@ const useUrlParams = () => {
     appendFlag = false
   ) => {
     if (!Array.isArray(keyOrKeys)) {
-      console.log("keyOrKeys", keyOrKeys);
       updateUrlParams(
         [{ key: keyOrKeys, value }],
         null,
