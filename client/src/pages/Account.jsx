@@ -1,11 +1,22 @@
-import React from 'react'
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
+import { signout } from "@/services/authService";
+import "./Account.css";
 
 const Account = () => {
-  return (
-    <div>
-      <h1>Your Account</h1>
-    </div>
-  )
-}
+  const navigate = useNavigate();
+  const handleSignOut = async () => {
+    await signout();
+    navigate("/");
+  };
 
-export default Account
+  return (
+    <div className="account">
+      <h1>Your Account</h1>
+      <button onClick={handleSignOut}>Sign out</button>
+    </div>
+  );
+};
+
+export default Account;

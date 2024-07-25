@@ -7,14 +7,15 @@ const register = (registerForm) => {
 };
 
 const signin = (signinForm) => {
-  // return request.post(`${AUTH_API_PATH}signin`, signinForm, {
-  //   withCredentials: true,
-  // });
-  return request.post(`${AUTH_API_PATH}signin`, signinForm);
+  return request.post(`${AUTH_API_PATH}signin`, signinForm, {
+    withCredentials: true,
+  });
 };
 
 const signout = () => {
-  localStorage.removeItem("user");
+  return request.post(`${AUTH_API_PATH}signout`, null, {
+    withCredentials: true,
+  });
 };
 
 export { register, signin, signout };

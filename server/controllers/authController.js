@@ -124,4 +124,17 @@ const signin = async (req, res) => {
   }
 };
 
-module.exports = { register, signin };
+const signout = async (req, res) => {
+  res.cookie('accessToken', '', {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production', 
+    sameSite: 'Strict', 
+    expires: new Date(0)
+  });
+
+  res.status(200).send({
+    message: 'Logout successful'
+  });
+};
+
+module.exports = { register, signin, signout };

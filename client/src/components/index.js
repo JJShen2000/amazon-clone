@@ -8,3 +8,4 @@ export { default as ProductCard } from "./ProductCard";
 export { default as SortDropdown } from "./SortDropdown";
 export { default as AuthForm } from "./AuthForm";
 export { default as AuthContainer } from "./AuthContainer";
+export { default as ProtectedRoute } from "./ProtectedRoute";

@@ -46,9 +46,9 @@ This project is a clone of Amazon.
   * [X] Product Card
   * [X] Product Scrollable Area
 * [X] Search Result Page
-* [ ] Sign in & Registration
+* [X] Sign in & Registration
   * [X] UI
-  * [ ] API
+  * [X] API
 * [ ] Cart
 * [ ] Product Page
 * [ ] Purchase Page

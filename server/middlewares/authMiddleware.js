@@ -3,7 +3,6 @@ require('dotenv').config();
 
 const authMiddleware = (req, res, next) => {
   const token = req.cookies.accessToken;
-  console.log("token", token)
   if (!token) {
     return res.status(401).send({ error: 'Access denied' });
   }

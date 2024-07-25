@@ -1,5 +1,5 @@
 import "./App.css";
-import { Header, Nav } from "./components";
+import { Header, Nav, ProtectedRoute } from "./components";
 import { Home, Search, Signin, Register, Account } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,16 +36,18 @@ function App() {
           />
         </Routes>
         <Routes>
-          <Route
-            path="/account"
-            element={
-              <div>
-                <Header />
-                <Nav />
-                <Account />
-              </div>
-            }
-          />
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/account"
+              element={
+                <div>
+                  <Header />
+                  <Nav />
+                  <Account />
+                </div>
+              }
+            />
+          </Route>
         </Routes>
         <Routes>
           <Route path="/signin" element={<Signin />} />

@@ -1,0 +1,28 @@
+.account {
+  max-width: 1000px;
+  min-width: 998px;
+  padding: 14px 18px 18px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.account > h1 {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 36px;
+}
+
+.account > button {
+  width: 100px;
+  background: #ffd814;
+  height: 29px;
+  border: 1px solid;
+  border-radius: 7px;
+  border-color: #fcd200;
+  margin-top: 10px;
+}
+
+.account > button:hover {
+  background: #ddbb10;
+}
