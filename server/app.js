@@ -5,9 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
-var indexRouter = require('./routes/index');
-var searchRouter = require('./routes/search');
-var authRouter = require('./routes/auth');
+const rootRouter = require('./routes');
 
 var app = express();
 
@@ -15,11 +13,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000', // Replace with your frontend domain
+  credentials: true, // Allow cookies to be sent
+}));
 
-app.use('/', indexRouter);
-app.use('/api', searchRouter);
-app.use('/api/auth', authRouter);
+app.use('/', rootRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

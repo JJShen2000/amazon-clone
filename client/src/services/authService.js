@@ -7,6 +7,9 @@ const register = (registerForm) => {
 };
 
 const signin = (signinForm) => {
+  // return request.post(`${AUTH_API_PATH}signin`, signinForm, {
+  //   withCredentials: true,
+  // });
   return request.post(`${AUTH_API_PATH}signin`, signinForm);
 };
 
@@ -14,18 +17,4 @@ const signout = () => {
   localStorage.removeItem("user");
 };
 
-// export const authHeader = () => {
-//   const user = JSON.parse(localStorage.getItem("user"));
-
-//   if (user && user.accessToken) {
-//     return { Authorization: "Bearer " + user.accessToken };
-//   } else {
-//     return {};
-//   }
-// };
-
-export {
-  register,
-  signin,
-  signout,
-};
+export { register, signin, signout };

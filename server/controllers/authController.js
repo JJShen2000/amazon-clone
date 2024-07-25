@@ -51,7 +51,7 @@ const register = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    const user = await User.create({
+    await User.create({
       username,
       email,
       password: hashedPassword,
@@ -72,10 +72,23 @@ const register = async (req, res) => {
 const signin = async (req, res) => {
   const { email, password } = req.body;
 
+  if (!email) {
+    return res.status(400).send({ error: "Email is required." });
+  }
+
+  if (!isValidEmail(email)) {
+    return res.status(400).send({
+      error:
+        "Email must be a valid email address and between 1 and 50 characters long",
+    });
+  }
+
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) {
-      return res.status(404).send({ error: "User not found" });
+      return res
+        .status(404)
+        .send({ error: "We cannot find an account with that email address." });
     }
 
     if (!password) {
@@ -83,10 +96,16 @@ const signin = async (req, res) => {
       return res.status(200).send({ message: "Email verified" });
     }
 
+    if (!isValidPassword(password)) {
+      return res
+        .status(400)
+        .send({ error: "Password must be between 1 and 50 characters long!" });
+    }
+
     // sign in with email and password
     const isPasswordValid = await bcrypt.compare(password, user.password);
     if (!isPasswordValid) {
-      return res.status(401).send({ error: "Invalid password" });
+      return res.status(401).send({ error: "Your password is incorrect." });
     }
 
     const token = generateToken(user);
@@ -99,7 +118,6 @@ const signin = async (req, res) => {
 
     return res.status(200).send({
       message: "Signin successful",
-      userData: { username: user.username },
     });
   } catch (err) {
     res.status(500).send({ error: "Internal server error" });

@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-router.get("/search", function (req, res) {
+router.get("/", function (req, res) {
   let { query, category, minPrice, maxPrice, sort, page, limit } = req.query;
 
   let meta = { productsPerPage: 25, totalProducts: 100 };

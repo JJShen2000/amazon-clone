@@ -1,6 +1,6 @@
 import "./App.css";
 import { Header, Nav } from "./components";
-import { Home, Search, Signin, Register } from "./pages";
+import { Home, Search, Signin, Register, Account } from "./pages";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer } from "react-toastify";
@@ -31,6 +31,18 @@ function App() {
                 <Header />
                 <Nav />
                 <Search />
+              </div>
+            }
+          />
+        </Routes>
+        <Routes>
+          <Route
+            path="/account"
+            element={
+              <div>
+                <Header />
+                <Nav />
+                <Account />
               </div>
             }
           />

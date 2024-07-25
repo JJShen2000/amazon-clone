@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PrivacyTipIcon from "@mui/icons-material/PrivacyTip";
 import PriorityHighIcon from "@mui/icons-material/PriorityHigh";
+import classNames from "classnames";
 
 import "./AuthForm.css";
 
@@ -24,7 +25,8 @@ const AuthForm = ({ buttonText, fields, handleSubmit }) => {
     if (
       field.name === "password" &&
       value !== "" &&
-      (inputs["confirmPassword"] && inputs["confirmPassword"] !== "") &&
+      inputs["confirmPassword"] &&
+      inputs["confirmPassword"] !== "" &&
       value !== inputs["confirmPassword"]
     ) {
       setInputErrors((prevItems) => new Set(prevItems).add("confirmPassword"));
@@ -60,6 +62,9 @@ const AuthForm = ({ buttonText, fields, handleSubmit }) => {
         <div key={index}>
           <label>{field.label}</label>
           <input
+            className={classNames("authForm__input", {
+              error: inputErrors.has(field.name),
+            })}
             type={field.type}
             name={field.name}
             value={inputs[field.name] || ""}

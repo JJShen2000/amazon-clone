@@ -1,15 +1,37 @@
-import React, { useState } from "react";
-import "./Header.css";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ReactCountryFlag from "react-country-flag";
 import cart from "@/cart-icon.svg";
 import { Link } from "react-router-dom";
+import { setUsername } from "@/store/modules/userStore";
+
+import "./Header.css";
+import { getMyInfo } from "@/services/userService";
 
 function Header() {
-  const logoAmazonClone = process.env.PUBLIC_URL + "/logo-amazon-clone-white.png";
+  const logoAmazonClone =
+    process.env.PUBLIC_URL + "/logo-amazon-clone-white.png";
   const [inputSearch, setInputSearch] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const dispatch = useDispatch();
+  const { username } = useSelector((store) => store.user);
+
+  useEffect(() => {
+    const checkAuthStatus = async () => {
+      try {
+        const response = await getMyInfo(); // Replace with your API endpoint
+        setIsLoggedIn(true);
+        dispatch(setUsername(response.data.user.username));
+      } catch (error) {
+        setIsLoggedIn(false);
+      }
+    };
+    checkAuthStatus();
+  }, []);
+
   return (
     <div className="header">
       <div className="header__left">
@@ -50,8 +72,13 @@ function Header() {
           <ArrowDropDownIcon className="header__searchDropdownIcon" />
         </div>
         <div className="header__accountOrder">
-          <Link to={`/signin`} style={{ textDecoration: "none" }}>
-            <span className="header__optionLine1">Hello, sign in</span>
+          <Link
+            to={isLoggedIn ? `/account` : `/signin`}
+            style={{ textDecoration: "none" }}
+          >
+            <span className="header__optionLine1">
+              Hello, {isLoggedIn ? username : "sign in"}
+            </span>
             <div className="header__optionLine2">
               <span>Account & Lists</span>
               <ArrowDropDownIcon className="header__searchDropdownIcon" />

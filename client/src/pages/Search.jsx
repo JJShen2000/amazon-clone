@@ -10,13 +10,13 @@ import {
   CustomPagination,
   ProductCard,
   SortDropdown,
-} from "../components";
-import apiUrl from "../config";
+} from "@/components";
+import apiUrl from "@/config";
 import {
   setMeta,
   setFilters,
   setProducts,
-} from "../store/modules/searchResultStore";
+} from "@/store/modules/searchResultStore";
 
 function Search() {
   const useQuery = () => {
