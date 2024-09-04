@@ -44,7 +44,9 @@ function Search() {
 
   const { meta, products } = useSelector((store) => store.searchResult);
 
-  return (
+  return products.length === 0 ? (
+    <h1>No results found.</h1>
+  ) : (
     <div>
       <div className="search__infoBar">
         <span className="search__infoBar--text">
@@ -61,7 +63,7 @@ function Search() {
           <span className="search__results--title">Results</span>
           <div className="search__results--container">
             {products.map((product) => (
-              <ProductCard product={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
           <CustomPagination {...meta} />

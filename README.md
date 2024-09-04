@@ -3,6 +3,7 @@
 This project is a clone of Amazon.
 
 ## Teck Stack
+
 - Frontend
   - React.js, Redux
 - Backend
@@ -23,10 +24,16 @@ This project is a clone of Amazon.
 ![1719405214235](image/README/1719405214235.png)
 
 ## Usage
+
 - Run frontend client, backend server, and PostgreSQL.
   ```
    docker-compose build
    docker-compose up
+  ```
+
+- Run Seed Script in another terminal:
+  ```
+   docker-compose exec backend npm run seed
   ```
 
 - Then you can access website via `http://localhost:3000/`
@@ -35,6 +42,7 @@ This project is a clone of Amazon.
   ```
   docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit --exit-code-from backend
   ```
+
 ## Goal
 
 ### Frontend
@@ -58,6 +66,12 @@ This project is a clone of Amazon.
 - [ ] Authentication
   - [X] JWT
   - [ ] Verify Email
+- [X] Products Data
+- [X] Search Controller
+
+## Data
+
+This project uses the [Amazon Sales Dataset](https://www.kaggle.com/datasets/karkavelrajaj/amazon-sales-dataset) from Kaggle.
 
 ## Disclaimer
 

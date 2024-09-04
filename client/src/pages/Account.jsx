@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
 import { signout } from "@/services/authService";
 import "./Account.css";
 

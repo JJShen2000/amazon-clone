@@ -98,8 +98,8 @@ const Filters = () => {
                   onChange={(e, newValue) => {
                     setPriceRange(newValue);
                   }}
-                  min={filter.low}
-                  max={filter.high}
+                  min={Number(filter.low)}
+                  max={Number(filter.high)}
                   valueLabelDisplay="auto"
                 />
                 <button
@@ -113,7 +113,6 @@ const Filters = () => {
                         { key: "priceMax" },
                       ]);
                     } else {
-                      console.log("priceRange", priceRange);
                       replaceUrlParams([
                         {
                           key: "priceMin",
@@ -183,12 +182,25 @@ const Filters = () => {
             <div key={index} className="filters__section">
               <h3 className="filters__title">{filter.title}</h3>
               {paramExists(getUrlParamKey(filter.title)) && (
-                <button
-                  className="filters__link"
-                  onClick={() => removeUrlParams(getUrlParamKey(filter.title))}
-                >
-                  &lt; {filter.backLable}
-                </button>
+                <div>
+                  <button
+                    className="filters__link"
+                    onClick={() =>
+                      removeUrlParams(getUrlParamKey(filter.title))
+                    }
+                  >
+                    &lt; {filter.backLabel}
+                  </button>
+                  <span>
+                    <strong>
+                      {filter.elements.find(
+                        (el) =>
+                          el.id ===
+                          Number(getUrlParams(getUrlParamKey(filter.title)))
+                      )?.label || ""}
+                    </strong>
+                  </span>
+                </div>
               )}
               {filter.elements.map((element, idx) => {
                 const queryKey = getUrlParamKey(filter.title);

@@ -15,44 +15,34 @@ function App() {
           <Route
             path="/"
             element={
-              <div>
+              <>
                 <Header />
                 <Nav />
                 <Home />
-              </div>
+              </>
             }
           />
-        </Routes>
-        <Routes>
           <Route
             path="/s"
             element={
-              <div>
+              <>
                 <Header />
                 <Nav />
                 <Search />
-              </div>
+              </>
             }
           />
-        </Routes>
-        <Routes>
-          <Route element={<ProtectedRoute />}>
-            <Route
-              path="/account"
-              element={
-                <div>
-                  <Header />
-                  <Nav />
-                  <Account />
-                </div>
-              }
-            />
-          </Route>
-        </Routes>
-        <Routes>
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <Header />
+                <Nav />
+                <Account />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/signin" element={<Signin />} />
-        </Routes>
-        <Routes>
           <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
