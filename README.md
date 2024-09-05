@@ -20,10 +20,11 @@ This project is a clone of Amazon.
 
 ### Main Page & Searching
 
-![Main Page & Searching](image/README/Main Page & Searching.gif)
+![image](https://github.com/JJShen2000/amazon-clone/blob/main/image/README/Main%20Page%20%26%20Searching.gif)
 
 ### Log in
-![Sign up & Login](image/README/Sign up & Login.gif)
+
+![Sign up & Login](https://github.com/JJShen2000/amazon-clone/blob/main/image/README/Sign%20up%20%26%20Login.gif)
 
 ## Usage
 
