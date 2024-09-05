@@ -1,6 +1,7 @@
 # Amazon Clone
 
 This project is a clone of Amazon.
+![1721050030266](image/README/1721050030266.png)
 
 ## Teck Stack
 
@@ -15,13 +16,14 @@ This project is a clone of Amazon.
 - Testing
   - Backend: Jest
 
-## Screenshots
+## Demo
 
-![1721050030266](image/README/1721050030266.png)
+### Main Page & Searching
 
-![1716561572598](image/README/1716561572598.png)
+![Main Page & Searching](image/README/Main Page & Searching.gif)
 
-![1719405214235](image/README/1719405214235.png)
+### Log in
+![Sign up & Login](image/README/Sign up & Login.gif)
 
 ## Usage
 
